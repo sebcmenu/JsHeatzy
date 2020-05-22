@@ -15,6 +15,7 @@ Quand vous êtes content du résultat, utilisez le bouton *Enregistrer* en haut 
 
 Le code est commenté un minimum, ce qui devrait permettre une compréhension globale du mode de fonctionnement de l'application.
 
+Le code peut être reutilisé sans rétributiuon de l'auteur, y compris pour des usages comerciaux.
 
 ==================================================================
 ## Standalone javascript application to programm Heatzy Pilote
@@ -31,3 +32,5 @@ Do it for any device planning you want to modify.
 When you are happy with the result, just use the *Save* button (red in the top right corner of the screen, left of the filter dropdown). It will send your modifications to the Heatzy Cloud).
 
 The code has a minimum level of comments, which should be enough to grab the global architecture of the application.
+
+The code can be used free of charge for any purpose (including comercial ones).
