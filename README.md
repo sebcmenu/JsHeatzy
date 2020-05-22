@@ -35,4 +35,4 @@ When you are happy with the result, just use the *Save* button (red in the top r
 The code has a minimum level of comments, which should be enough to grab the global architecture of the application.
 
 #### Important
-If you wish to host the application on a web server, you'll have to configure CORS so that the ajax request can reach Si vous voulez héberger l'application sur un serveur web, il vous faudra paramétrer les CORS pour que les requêtes puissent atteindre https://euapi.gizwits.com/.
+If you wish to host the application on a web server, you'll have to configure CORS so that the ajax request can reach https://euapi.gizwits.com/.
