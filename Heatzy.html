@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Heatzy Control panel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="heatzy.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="script/HeatzyAPI.js" charset="utf-8"></script>
+    <script src="script/Model.js" charset="utf-8"></script>
+    <script src="script/Controler.js" charset="utf-8"></script>
+    <script src="script/Startup.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+<div id="allContent">
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+      <a class="navbar-brand" href="#">Heatzy</a>
+
+      <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+           <a class="nav-link" href="#" id="loginLabel"></a>
+         </li>
+         </ul>
+         <form class="form-inline">
+           <span class="alert alert-danger invisible" id="saveBox">
+             <a href="#" id="saveAll">Enregistrer</a>
+           </span>
+           <div class="dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Filtre
+             </a>
+             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="listRoomFilter">
+               <a class="dropdown-item" href="#">Action</a>
+               <a class="dropdown-item" href="#">Another action</a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="#">Something else here</a>
+             </div>
+           </div>
+         </form>
+   </nav>
+
+<div id="calendar">
+<table class="table table-hover body_scroll" >
+  <thead id="calendarHeader">
+    <tr><th>Jour</th><th>Zone/pièce</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <th class="timeRange">&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th><th>&nbsp;&nbsp;</th>
+      <tr>
+  </thead>
+  <tbody id="calendarContent">
+
+  </tbody>
+</table>
+</div>
+<div id="footer">
+
+    <div id="zoneSelector"class="btn-group dropup">
+  <button id="butZoneSelector" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sélectionnez une zone
+  </button>
+  <div id="selectedZone" class="dropdown-menu">
+    <a class="dropdown-item" href="#">Regular link</a>
+    <a class="dropdown-item active" href="#">Active link</a>
+    <a class="dropdown-item" href="#">Another link</a>  </div>
+
+    </div>
+    <div id="rangeForm">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+        <div id="titleProgForm">
+            <a class="navbar-brand" href="#">Programmation</a>
+          </div>
+        <button class="btn btn-dark btn-sm" id="newProg" disabled>+</button>
+      </nav>
+      <div id="progFormDiv">
+        <form id="progForm" class="form-inline invisible">
+          <div id="hourPane">
+            <div class="form-group hourSelect">
+              <span>De</span><select class="form-control" id="fromHourForm">
+                <option>00:00</option>
+                <option>00:30</option>
+              </select>
+            </div>
+            <div class="form-group hourSelect">
+              <span>A</span>
+              <select class="form-control invalid" id="toHourForm">
+                <option>00:00</option>
+                <option>00:30</option>
+              </select>
+            </div>
+          </div>
+          <div id="dayPane">
+            <select multiple class="form-control w-100 custom-select" id="daysForm">
+              <option>Lundi</option>
+              <option>Mardi</option>
+            <option>Mercredi</option>
+          </select>
+        </div>
+        <div id="modePane">
+        <button class="btn btn-light" targetClass="btn-warning" id="butMode0" mode="0">Confort</button>
+        <button class="btn btn-light" targetClass="btn-success" id="butMode1" mode="1">Eco</button>
+        <button class="btn btn-light" targetClass="btn-primary" id="butMode2" mode="2">Hors-Gel</button>
+        <button class="btn btn-light" targetClass="btn-dark" id="butMode3" mode="3">Off</button>
+      </div>
+      <div id="validPane">
+      <button class="btn btn-primary" id="validForm">Valider</button>
+      <button class="btn btn-secondary" id="cancelForm">Annuler</button>
+
+    </div>
+      </form>
+    </div>
+    </div>
+    <div id="rangeSelector">
+      <div class="list-group" id="rangeList">
+
+      </div>
+    </div>
+
+</div>
+</div>
+
+    <div class="modal fade" id="loginProvider" tabindex="-1" role="dialog" aria-labelledby="loginProvider" aria-hidden="true"  data-backdrop="static">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Connectez-vous à votre compte Heatzy</h5>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger collapse" role="alert" id="loginAlert">
+              This is a danger alert—check it out!
+            </div>
+            <div class="form-group">
+              <label for="login">Compte</label>
+              <input type="text" class="form-control" id="login" aria-describedby="loginHelp" placeholder="Entrez votre identifiant (email)">
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input type="password" class="form-control" id="password" aria-describedby="loginHelp" placeholder="Entrez votre mot de passe">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button-->
+            <button type="button" class="btn btn-primary" id="loginProviderSubmit">Se Connecter</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
