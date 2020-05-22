@@ -15,8 +15,6 @@ Quand vous êtes content du résultat, utilisez le bouton *Enregistrer* en haut 
 
 Le code est commenté un minimum, ce qui devrait permettre une compréhension globale du mode de fonctionnement de l'application.
 
-#### Important
-Si vous voulez héberger l'application sur un serveur web, il vous faudra paramétrer les CORS pour que les requêtes puissent atteindre https://euapi.gizwits.com/
 
 ==================================================================
 ## Standalone javascript application to programm Heatzy Pilote
@@ -33,6 +31,3 @@ Do it for any device planning you want to modify.
 When you are happy with the result, just use the *Save* button (red in the top right corner of the screen, left of the filter dropdown). It will send your modifications to the Heatzy Cloud).
 
 The code has a minimum level of comments, which should be enough to grab the global architecture of the application.
-
-#### Important
-If you wish to host the application on a web server, you'll have to configure CORS so that the ajax request can reach https://euapi.gizwits.com/.
